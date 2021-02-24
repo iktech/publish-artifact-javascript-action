@@ -29,7 +29,7 @@ try {
         }
     }
 
-    payload = {
+    let payload = {
         stage,
         artifact_name: name,
         type,
@@ -87,8 +87,8 @@ try {
     });
 
     // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
+    const p = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`The event payload: ${p}`);
 } catch (error) {
     core.setFailed(error.message);
 }
