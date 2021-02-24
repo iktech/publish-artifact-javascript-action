@@ -1,0 +1,44 @@
+name: 'Publish Artifact'
+description: 'Publishes artifact details to the artifactz.io service'
+inputs:
+  serviceUrl:  # id of input
+    description: 'URL of the artifactz service'
+    required: true
+    default: 'https://artifactor.artifactz.io'
+  apiToken:
+    description: API Token to use
+    required: true
+  stage:
+    description: 'Stage where artifact is getting published'
+    required: true
+  stageDescription:
+    description: 'Stage description'
+    required: false
+  name:
+    description: 'Name of the artifact to publish'
+    required: true
+  description:
+    description: 'Description of the artifact that is getting published'
+    required: false
+  flow:
+    description: 'Name of the flow that will be associated with the artifact'
+    required: false
+  type:
+    description: 'Artifact type. Accepted values JAR, WAR, EAR, DockerImage'
+    required: true
+    default: 'DockerImage'
+  groupId:
+    description: 'The maven group Id for the Java artifacts'
+    required: false
+  artifactId:
+    description: 'The maven artifact Id for the java artifacts'
+    required: false
+  version:
+    description: 'The artifact version to publish'
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'octagon'
+  color: blue
