@@ -99,8 +99,7 @@ try {
             console.log(`Successfully published artifact '${name}' version: ${version}`);
         }
     }).catch(error => {
-        console.log(error);
-        core.setFailed(error.data.message);
+        core.setFailed(error.response.data.error);
     });
 } catch (error) {
     core.setFailed(error.message);
