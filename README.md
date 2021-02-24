@@ -39,3 +39,19 @@ The maven artifact Id for the java artifacts'
 
 ### `version`
 **Required** The artifact version to publish
+
+## Example
+Before adding this action to your workflow, set a secret with the API token in your project.
+Then, you can publish the artifact details using this step:
+```yaml
+- name: Publish Artifact Info
+  uses: iktech/publish-artifact-javascript-action@v1.0.0
+  with:
+    apiToken: ${{ secrets.ARTIFACTZ_TOKEN }}
+    stage: Development
+    flow: github
+    type: JAR
+    groupId: io.iktech
+    artifactId: artifactz-client
+    version: 1.0.0
+```

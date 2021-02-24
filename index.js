@@ -71,21 +71,24 @@ try {
         }
     }
     console.log(`Publishing artifact '${name}' to the ${serviceUrl}`);
-    const response = await axios.put(`${serviceUrl}/artifacts/versions`, payload, {
+    axios.put(`${serviceUrl}/artifacts/versions`, payload, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiToken}`
         }
+    }).then(response => {
+        if (response.status !== 202) {
+            core.setFailed(`Cannot publish artifact '${name}' version: ${response.data.message}`);
+        } else {
+            console.log(`Successfully published artifact '${name}' version: ${version}`);
+        }
+    }).catch(error => {
+        core.setFailed(error.data.message);
     });
 
-    if (response.status !== 202) {
-        core.setFailed(`Cannot publish artifact '${name}' version: ${response.data.message}`);
-    } else {
-        console.log(`Successfully published artifact '${name}' version: ${version}`);
-    }
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
 } catch (error) {
-    core.setFailed(error.data.message);
+    core.setFailed(error.message);
 }
