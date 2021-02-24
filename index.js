@@ -15,6 +15,18 @@ try {
     const artifactId = core.getInput('artifactId');
     const version = core.getInput('version');
 
+    if (!apiToken) {
+        core.setFailed('API token is required');
+    }
+
+    if (!stage) {
+        core.setFailed('Stage is required');
+    }
+
+    if (!name) {
+        core.setFailed('Artifact name is required');
+    }
+
     if (!type) {
        type = 'DockerImage';
     }
@@ -27,6 +39,10 @@ try {
         if (!groupId || !artifactId) {
             core.setFailed('Group Id and Artifact Id are required for the Java artifacts');
         }
+    }
+
+    if (!version) {
+        core.setFailed('Version is required');
     }
 
     let payload = {
@@ -74,7 +90,8 @@ try {
     axios.put(`${serviceUrl}/artifacts/versions`, payload, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiToken}`
+            'User-Agent': 'Publish Artifact Github Action v1.0.0',
+            'Authorization': `Bearer ${apiToken}`,
         }
     }).then(response => {
         if (response.status !== 202) {
@@ -83,6 +100,7 @@ try {
             console.log(`Successfully published artifact '${name}' version: ${version}`);
         }
     }).catch(error => {
+        console.log(error);
         core.setFailed(error.data.message);
     });
 
