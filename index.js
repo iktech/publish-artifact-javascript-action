@@ -30,11 +30,11 @@ try {
        type = 'DockerImage';
     }
 
-    if (!type in ['JAR', 'WAR', 'EAR', 'DockerImage']) {
+    if (['JAR', 'WAR', 'EAR', 'DockerImage'].indexOf(type) === -1) {
         core.setFailed('Unexpected type specified: ' + type);
     }
 
-    if (type in ['JAR', 'WAR', 'EAR']) {
+    if (['JAR', 'WAR', 'EAR'].indexOf(type) >= -1) {
         if (!groupId || !artifactId) {
             core.setFailed('Group Id and Artifact Id are required for the Java artifacts');
         }
