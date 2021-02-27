@@ -1,5 +1,7 @@
 # Publish Artifact Javascript Action
 
+[![Build Status](https://dev.azure.com/iktechio/artifactz.io/_apis/build/status/iktech.artifactz-azure-devops-extension?branchName=master)](https://dev.azure.com/iktechio/artifactz.io/_build/latest?definitionId=3&branchName=master)
+
 This action publishes the artifact version to the https://artifactz.io.
 If the specified stage does not exist, it will be created.
 If artifact does not exist, it will be created. If it exists it will be modified using the information supplied with
