@@ -34,7 +34,7 @@ try {
         core.setFailed('Unexpected type specified: ' + type);
     }
 
-    if (['JAR', 'WAR', 'EAR'].indexOf(type) >= -1) {
+    if (['JAR', 'WAR', 'EAR'].indexOf(type) > -1) {
         if (!groupId || !artifactId) {
             core.setFailed('Group Id and Artifact Id are required for the Java artifacts');
         }
