@@ -1,6 +1,6 @@
 {
   "name": "publish-artifact-javascript-action",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/ikolomiyets/publish-artifact-javascript-action#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
-    "axios": "^0.25.0"
+    "@actions/github": "^6.0.0",
+    "axios": "^1.7.9"
   }
 }

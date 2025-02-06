@@ -89,7 +89,7 @@ try {
     axios.put(`${serviceUrl}/artifacts/versions`, payload, {
         headers: {
             'Content-Type': 'application/json',
-            'User-Agent': 'Publish Artifact Github Action v1.0.0',
+            'User-Agent': 'Publish Artifact Github Action v1.1.0',
             'Authorization': `Bearer ${apiToken}`,
         }
     }).then(response => {
